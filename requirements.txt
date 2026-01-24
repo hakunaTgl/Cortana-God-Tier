@@ -1,0 +1,30 @@
+# Cortana God-Tier Requirements
+# Core AI/ML Dependencies
+torch>=2.1.0
+transformers>=4.35.0
+sentencepiece>=0.1.99
+accelerate>=0.25.0
+
+# Memory & Performance
+psutil>=5.9.5
+memory-profiler>=0.61.0
+redis>=5.0.0
+
+# API & Web
+flask>=3.0.0
+flask-cors>=4.0.0
+requests>=2.31.0
+
+# Configuration
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Utilities
+click>=8.1.7
+rich>=13.7.0
+tqdm>=4.66.0
+
+# Testing
+pytest>=7.4.3
+pytest-cov>=4.1.0
+pytest-asyncio>=0.21.1
