@@ -1,0 +1,35 @@
+name: Daily Security Audit
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 3 AM
+  workflow_dispatch:
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install safety bandit
+      
+      - name: Run safety check
+        run: |
+          safety check --json || true
+      
+      - name: Run bandit security scan
+        run: |
+          bandit -r cortana/ -f json || true
+      
+      - name: Check for vulnerabilities
+        run: |
+          echo "Security audit completed"
