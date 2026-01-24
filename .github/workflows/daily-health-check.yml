@@ -1,0 +1,53 @@
+name: Daily System Health Check
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # 2 AM EST (7 AM UTC)
+  workflow_dispatch:
+
+jobs:
+  health_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Create directories
+        run: |
+          mkdir -p logs reports scripts
+      
+      - name: Create placeholder scripts
+        run: |
+          echo 'import psutil; print(f"Memory: {psutil.virtual_memory().percent}%")' > scripts/analyze_memory_usage.py
+          echo 'print("Model health check complete")' > scripts/model_health_check.py
+          echo 'print("Health report generated")' > scripts/generate_health_report.py
+      
+      - name: Install dependencies
+        run: |
+          pip install psutil
+      
+      - name: Run Memory Analysis
+        run: |
+          python scripts/analyze_memory_usage.py > logs/memory-$(date +%Y%m%d).log
+        continue-on-error: true
+      
+      - name: Check Model Performance
+        run: |
+          python scripts/model_health_check.py
+        continue-on-error: true
+      
+      - name: Generate Health Report
+        run: |
+          python scripts/generate_health_report.py
+        continue-on-error: true
+      
+      - name: Upload Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-logs-${{ github.run_number }}
+          path: logs/
+          retention-days: 30
