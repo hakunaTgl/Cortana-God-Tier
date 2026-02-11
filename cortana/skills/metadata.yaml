@@ -1,0 +1,61 @@
+# Cortana Skills Metadata
+# Version tracking and requirements for all skills
+
+skills:
+  research:
+    version: "1.0.0"
+    description: "Web search, information gathering, and summarization"
+    status: "stable"
+    capabilities:
+      - research
+      - analysis
+    dependencies:
+      - requests>=2.31.0
+      - beautifulsoup4>=4.12.0
+    privacy_level: "cloud"
+    experimental: false
+    
+  code:
+    version: "1.0.0"
+    description: "Code execution, file operations, and development tools integration"
+    status: "stable"
+    capabilities:
+      - code
+      - system
+    dependencies:
+      - GitPython>=3.1.40
+    privacy_level: "local"
+    experimental: false
+    
+  memory:
+    version: "1.0.0"
+    description: "Context management and memory storage"
+    status: "stable"
+    capabilities:
+      - memory
+    dependencies:
+      - psutil>=5.9.5
+    privacy_level: "local"
+    experimental: false
+    
+  system:
+    version: "1.0.0"
+    description: "OS-level operations and system monitoring"
+    status: "stable"
+    capabilities:
+      - system
+    dependencies:
+      - psutil>=5.9.5
+    privacy_level: "local"
+    experimental: false
+
+# Skill lifecycle states:
+# - experimental: Under development, may have bugs
+# - beta: Feature complete, testing in progress
+# - stable: Production ready
+# - deprecated: No longer maintained
+
+# Privacy levels:
+# - local: All data stays on device
+# - cloud: May use external APIs/services
+# - mixed: Some operations local, some cloud

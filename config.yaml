@@ -7,6 +7,47 @@ system:
   version: "1.0.0"
   platform: "multi-platform"
   privacy_mode: true
+
+# Skills Configuration
+skills:
+  enabled:
+    - research
+    - code
+    - memory
+    - system
+  experimental: []
+  
+  # Individual skill configurations
+  research:
+    search_enabled: true
+    max_results: 10
+    max_cache_size: 100
+  
+  code:
+    safe_mode: true
+    allowed_commands:
+      - ls
+      - pwd
+      - echo
+      - cat
+      - git
+    workspace_path: "."
+  
+  memory:
+    max_short_term_memory: 50
+    context_window: 10
+    memory_file: "memory_store.json"
+  
+  system:
+    monitoring_enabled: true
+    monitor_interval: 60
+    memory_threshold: 80
+    cpu_threshold: 90
+
+# Event Bus Configuration
+event_bus:
+  async_enabled: true
+  max_queue_size: 1000
   
 # Memory Management (RAM Optimization)
 memory:

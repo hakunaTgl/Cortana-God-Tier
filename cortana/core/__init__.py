@@ -1,8 +1,8 @@
-"""Cortana Core Module"""
+"""Cortana Core Module - Central brain and processing"""
 
-from cortana.core.brain import CortanaBrain
-from cortana.core.memory_manager import MemoryManager
-from cortana.core.model_loader import ModelLoader
-from cortana.core.quantization import ModelQuantizer
+# Only import what's needed for modular architecture
+# Heavy imports (torch, transformers) are lazy-loaded in respective modules
+# To use CortanaBrain or other heavy modules, import them directly:
+# from cortana.core.brain import CortanaBrain
 
-__all__ = ['CortanaBrain', 'MemoryManager', 'ModelLoader', 'ModelQuantizer']
+__all__ = []
