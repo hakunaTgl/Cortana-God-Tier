@@ -35,7 +35,7 @@ class ResearchSkill(BaseSkill):
             version="1.0.0",
             description="Web search, information gathering, and summarization",
             capabilities=[SkillCapability.RESEARCH, SkillCapability.ANALYSIS],
-            dependencies=["requests", "beautifulsoup4"],
+            dependencies=["requests"],  # beautifulsoup4 will be added when implementing real scraping
             privacy_level="cloud",  # May use external APIs
             experimental=False
         )
@@ -209,9 +209,13 @@ class ResearchSkill(BaseSkill):
             # Clear cache
             self._cache.clear()
             
-            # Unsubscribe from events
+            # Unsubscribe from all events
             for event_name in list(self._subscribed_events):
-                self.event_bus.unsubscribe(event_name, self._handle_query_event)
+                # Get the appropriate handler for each event
+                if event_name == "research.query":
+                    self.event_bus.unsubscribe(event_name, self._handle_query_event)
+                elif event_name == "research.clear_cache":
+                    self.event_bus.unsubscribe(event_name, self._handle_clear_cache_event)
             
             self.status = SkillStatus.DISABLED
             self.logger.info("ResearchSkill cleanup complete")

@@ -139,13 +139,13 @@ class CortanaAssistant:
             query_lower = query.lower()
             
             # Memory-related queries
-            if any(word in query_lower for word in ['remember', 'recall', 'memory', 'context']):
+            if any(word in query_lower for word in ['remember', 'recall', 'context']):
                 result = await self.skills_manager.execute_skill('memory', query, {'operation': 'search'})
                 if result['success']:
                     return self._format_response(result, 'memory')
             
             # System-related queries
-            elif any(word in query_lower for word in ['memory', 'cpu', 'system', 'status', 'health']):
+            elif any(word in query_lower for word in ['cpu', 'system', 'status', 'health', 'memory usage', 'memory available']):
                 result = await self.skills_manager.execute_skill('system', query, {'operation': 'info'})
                 if result['success']:
                     return self._format_response(result, 'system')
