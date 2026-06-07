@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cortana God-Tier AI Assistant</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d0d0d;color:#f0f0f0;font-family:'Segoe UI',sans-serif;display:flex;flex-direction:column;height:100vh}
+.header{background:linear-gradient(135deg,#1a0a2e,#0a1a2e);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #4a0a8a44}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 16px #7c3aed55}
+.logo-text{font-size:1.1rem;font-weight:700;background:linear-gradient(90deg,#a78bfa,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.caps{display:flex;gap:12px;font-size:.72rem}
+.cap{background:#7c3aed22;border:1px solid #7c3aed44;border-radius:20px;padding:3px 10px;color:#a78bfa}
+.layout{display:flex;flex:1;overflow:hidden}
+.sidebar{width:220px;background:#0a0a1a;border-right:1px solid #1a1a3a;padding:14px;display:flex;flex-direction:column;gap:6px;overflow-y:auto}
+.mem-header{font-size:.65rem;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;margin-top:8px}
+.mem-item{background:#111125;border:1px solid #1e1e3a;border-radius:6px;padding:8px 10px;font-size:.75rem;color:#9999bb}
+.mem-item span{color:#a78bfa;font-size:.68rem;display:block;margin-bottom:2px}
+.chat-container{flex:1;display:flex;flex-direction:column;background:#08080f}
+.messages{flex:1;padding:18px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;gap:10px;align-items:flex-start}
+.msg.user{flex-direction:row-reverse}
+.msg-avatar{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.cortana-av{background:linear-gradient(135deg,#7c3aed,#06b6d4);box-shadow:0 0 10px #7c3aed44}
+.user-av{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.bubble{max-width:72%;background:#111125;border:1px solid #1e1e3a;border-radius:12px;padding:10px 14px;font-size:.85rem;line-height:1.6}
+.msg.user .bubble{background:#7c3aed22;border-color:#7c3aed44}
+.bubble .meta{font-size:.65rem;color:#6b7280;margin-top:5px}
+.typing{display:flex;gap:4px;padding:4px 0}
+.dot-t{width:6px;height:6px;background:#7c3aed;border-radius:50%;animation:td .8s infinite}
+.dot-t:nth-child(2){animation-delay:.15s}
+.dot-t:nth-child(3){animation-delay:.3s}
+@keyframes td{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-5px);opacity:1}}
+.input-area{background:#0a0a1a;border-top:1px solid #1a1a3a;padding:14px 18px}
+.modes{display:flex;gap:6px;margin-bottom:10px}
+.mode-btn{background:#111125;border:1px solid #1e1e3a;border-radius:16px;padding:4px 12px;font-size:.72rem;color:#6b7280;cursor:pointer;transition:.2s}
+.mode-btn.active{background:#7c3aed22;border-color:#7c3aed;color:#a78bfa}
+.irow{display:flex;gap:8px}
+.ainput{flex:1;background:#111125;border:1px solid #2e2e4e;border-radius:10px;padding:10px 14px;color:#f0f0f0;font-size:.88rem;outline:none;resize:none}
+.ainput:focus{border-color:#7c3aed;box-shadow:0 0 8px #7c3aed22}
+.send{background:linear-gradient(135deg,#7c3aed,#06b6d4);border:none;border-radius:10px;padding:10px 18px;color:#fff;cursor:pointer;font-size:.9rem}
+.panel{width:200px;background:#0a0a1a;border-left:1px solid #1a1a3a;padding:14px;font-size:.75rem}
+.phead{font-size:.65rem;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-top:10px}
+.skill{background:#111125;border:1px solid #1e1e3a;border-radius:6px;padding:6px 10px;margin-bottom:5px;color:#8899aa}
+.skill-bar{height:2px;background:#1e1e3a;border-radius:1px;margin-top:4px}
+.skill-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#06b6d4);border-radius:1px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo"><div class="logo-icon">🤖</div><div class="logo-text">Cortana God-Tier</div></div>
+  <div class="caps">
+    <span class="cap">Memory Active</span>
+    <span class="cap">Privacy-First</span>
+    <span class="cap">Multi-Platform</span>
+  </div>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="mem-header">Long-term Memory</div>
+    <div class="mem-item"><span>Identity</span>Tylor Fenwick — SF, CA. AI builder.</div>
+    <div class="mem-item"><span>Projects</span>6 active repos. GitHub: hakunaTgl</div>
+    <div class="mem-item"><span>Interests</span>EV scooters, automation, music AI</div>
+    <div class="mem-item"><span>Preferences</span>Dark UI, concise responses, code-first</div>
+    <div class="mem-header">Recent Context</div>
+    <div class="mem-item"><span>Last session</span>NIU outreach reply drafted</div>
+    <div class="mem-item"><span>Active task</span>Portfolio systems completion</div>
+  </div>
+  <div class="chat-container">
+    <div class="messages" id="msgs">
+      <div class="msg">
+        <div class="msg-avatar cortana-av">🤖</div>
+        <div class="bubble">Good morning, Tylor. All systems loaded. Memory synced across 3 devices. I have 2 reminders and 1 pending task from yesterday. How can I assist you today?
+          <div class="meta">Cortana • Memory-enabled • Just now</div>
+        </div>
+      </div>
+      <div class="msg user">
+        <div class="msg-avatar user-av">TF</div>
+        <div class="bubble">Run a deep research on the top 5 electric scooter brands and compile a comparison report
+          <div class="meta">You • Just now</div>
+        </div>
+      </div>
+      <div class="msg">
+        <div class="msg-avatar cortana-av">🤖</div>
+        <div class="bubble">✅ Initiating Research Pipeline...<br><br>🔍 Querying NIU, Segway, Unagi, Bird, Lime...<br>📊 Pulling spec sheets, pricing, range data...<br>📝 Generating structured comparison table...<br><br>Report will be saved to memory and exported as PDF. ETA: 22 seconds.
+          <div class="meta">Cortana • Research Agent • Just now</div>
+        </div>
+      </div>
+    </div>
+    <div class="input-area">
+      <div class="modes">
+        <div class="mode-btn active">Chat</div>
+        <div class="mode-btn">Research</div>
+        <div class="mode-btn">Code</div>
+        <div class="mode-btn">Schedule</div>
+        <div class="mode-btn">Memory</div>
+      </div>
+      <div class="irow">
+        <input class="ainput" placeholder="Ask Cortana anything..." id="ai">
+        <button class="send" onclick="send()">↑</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="phead">Active Skills</div>
+    <div class="skill">Research<div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+    <div class="skill">Code Gen<div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+    <div class="skill">Memory<div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div></div>
+    <div class="skill">Scheduling<div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+    <div class="skill">Email Draft<div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+    <div class="phead">System</div>
+    <div class="skill">✅ OpenAI GPT-4</div>
+    <div class="skill">✅ Local Memory DB</div>
+    <div class="skill">✅ Telegram Bridge</div>
+    <div class="skill">✅ File System</div>
+  </div>
+</div>
+<script>
+const responses=['Understood. Running that task now… pipeline engaged.','Memory updated. I’ll remember this for future sessions.','Task complete. Results saved to your memory store.','Analyzing… I’ve found 3 relevant insights. Want a summary?','Done. I’ve also cross-referenced your previous notes on this topic.'];
+function send(){
+  const inp=document.getElementById('ai'),val=inp.value.trim();if(!val)return;
+  const msgs=document.getElementById('msgs');
+  const um=document.createElement('div');um.className='msg user';
+  um.innerHTML=`<div class="msg-avatar user-av">TF</div><div class="bubble">${val}<div class="meta">You • Just now</div></div>`;
+  msgs.appendChild(um);
+  const typing=document.createElement('div');typing.className='msg';
+  typing.innerHTML=`<div class="msg-avatar cortana-av">🤖</div><div class="bubble"><div class="typing"><div class="dot-t"></div><div class="dot-t"></div><div class="dot-t"></div></div></div>`;
+  msgs.appendChild(typing);
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    typing.remove();
+    const r=responses[Math.floor(Math.random()*responses.length)];
+    const am=document.createElement('div');am.className='msg';
+    am.innerHTML=`<div class="msg-avatar cortana-av">🤖</div><div class="bubble">${r}<div class="meta">Cortana • Just now</div></div>`;
+    msgs.appendChild(am);
+    msgs.scrollTop=msgs.scrollHeight;
+  },1400);
+  inp.value='';
+}
+document.getElementById('ai').addEventListener('keydown',e=>{if(e.key==='Enter')send();});
+</script>
+</body>
+</html>
